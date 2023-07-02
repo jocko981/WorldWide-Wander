@@ -39,7 +39,7 @@ export default function Login() {
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">Email address Field</label>
           <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} />
         </div>
 
