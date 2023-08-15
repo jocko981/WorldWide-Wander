@@ -11,7 +11,7 @@ App can keep track of your adventures and trips over the world. It will save loc
 
 ## Installation
 
-Vite build tool
+Vite build tool, es-lint
 
 npm install
 
