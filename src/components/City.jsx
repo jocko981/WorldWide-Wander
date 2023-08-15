@@ -19,7 +19,7 @@ function City() {
       getCity(id);
       //don't add getCity() to dependency array
     },
-    [id]
+    [id, getCity]
   );
 
   if (isLoading) return <Spinner />;

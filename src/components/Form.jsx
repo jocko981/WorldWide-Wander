@@ -43,7 +43,6 @@ function Form() {
           setGeocodingError("");
           const res = await fetch(`${BASE_URL_REVERSE_GEOCODE}?latitude=${lat}&longitude=${lng}`);
           const data = await res.json();
-          console.log(data);
 
           if (!data.countryCode)
             throw new Error("Please click on something that is not outside the borders 😄");

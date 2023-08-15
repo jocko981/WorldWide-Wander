@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 
 const FAKE_USER = {
-  name: "Jovan",
+  name: "John",
   email: "jovannikolic17@gmail.com",
   password: "test",
   avatar: "https://i.pravatar.cc/100?u=zz",
@@ -42,14 +42,17 @@ function AuthContextProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ error, hasAuth, user, login, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ error, hasAuth, user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 
 function useAuthContext() {
   const contextValue = useContext(AuthContext);
 
-  if (contextValue === undefined) throw new Error("AuthContext was used outside of the <AuthContextProvider>");
+  if (contextValue === undefined)
+    throw new Error("AuthContext was used outside of the <AuthContextProvider>");
   return contextValue;
 }
 

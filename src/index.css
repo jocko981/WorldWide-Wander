@@ -52,8 +52,8 @@ textarea {
 
 textarea {
   resize: vertical;
-  min-height: 100px;
-  max-height: 250px;
+  min-height: 8rem;
+  max-height: 24rem;
 }
 
 input:focus,
@@ -83,3 +83,27 @@ textarea:focus {
     "description": "Import CSS Module as `styles`"
   },
 */
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  html {
+    font-size: 43.75%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 37.5%;
+  }
+}

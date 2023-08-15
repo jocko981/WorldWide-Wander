@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useReducer } from "react";
 
 const CitiesContext = createContext();
 
@@ -70,8 +70,10 @@ function CitiesContextProvider({ children }) {
     return () => clearTimeout();
   }, []);
 
-  async function getCity(cityId) {
-    // if (cityId == currentCity?.id) return;
+  // memoize value that is used in the dependency array of another hook
+  // (useEffect) in City.jsx to prevent infinite loops
+  const getCity = useCallback(async function getCity(cityId) {
+    // if (cityId == currentCity?.id) return; //don't want this to remember last current city if visiting it again in url
     dispatch({ type: "loading" });
 
     setTimeout(async () => {
@@ -89,7 +91,7 @@ function CitiesContextProvider({ children }) {
         throw new Error("Error fetching single city data:", err);
       }
     }, 600);
-  }
+  }, []);
 
   async function createCity(newCity) {
     dispatch({ type: "loading" });
