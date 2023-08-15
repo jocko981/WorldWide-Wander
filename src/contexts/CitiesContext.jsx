@@ -21,8 +21,11 @@ function reducer(currState, action) {
       return { ...currState, isLoading: false, cities: action.payload };
     // 1 city
     case "city/loaded":
-      const currentCityData = currState.cities?.find((c) => c.id.toString() === action.payload.toString());
-      if (currentCityData === undefined) return { ...currState, isLoading: false, currentCity: null };
+      const currentCityData = currState.cities?.find(
+        (c) => c.id.toString() === action.payload.toString()
+      );
+      if (currentCityData === undefined)
+        return { ...currState, isLoading: false, currentCity: null };
       return { ...currState, isLoading: false, currentCity: currentCityData };
 
     case "city/created":
@@ -55,7 +58,7 @@ function CitiesContextProvider({ children }) {
 
       setTimeout(async () => {
         try {
-          const res = await fetch("../../public/data/cities.json");
+          const res = await fetch("/data/cities.json");
           const data = await res.json();
 
           dispatch({ type: "cities/loaded", payload: data.cities });
@@ -137,7 +140,9 @@ function CitiesContextProvider({ children }) {
   }
 
   return (
-    <CitiesContext.Provider value={{ isLoading, error, cities, currentCity, getCity, createCity, deleteCity }}>
+    <CitiesContext.Provider
+      value={{ isLoading, error, cities, currentCity, getCity, createCity, deleteCity }}
+    >
       {children}
     </CitiesContext.Provider>
   );
