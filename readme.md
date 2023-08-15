@@ -12,13 +12,19 @@ App can keep track of your adventures and trips over the world. It will save loc
 ## Installation
 
 Vite build tool
+
 npm install
+
 npm run dev
 
 ## Technologies
 
 Vite build tool
+
 react hooks
+
 Context
+
 Modular css
+
 leaflet + react-leaflet
