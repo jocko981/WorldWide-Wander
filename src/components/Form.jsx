@@ -17,6 +17,13 @@ import BackButton from "./BackButton";
 import Message from "./Message";
 import Spinner from "./Spinner";
 
+const flagemojiToPNG = (flag) => {
+  var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
+    .map((char) => String.fromCharCode(char - 127397).toLowerCase())
+    .join("");
+  return <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />;
+};
+
 const BASE_URL_REVERSE_GEOCODE = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 function Form() {
@@ -91,7 +98,7 @@ function Form() {
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input id="cityName" onChange={(e) => setCityName(e.target.value)} value={cityName} />
-        <span className={styles.flag}>{emoji}</span>
+        <span className={styles.flag}>{flagemojiToPNG(emoji)}</span>
       </div>
 
       <div className={styles.row}>

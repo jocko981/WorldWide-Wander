@@ -10,6 +10,13 @@ import Spinner from "./Spinner";
 import Message from "./Message";
 import BackButton from "./BackButton";
 
+const flagemojiToPNG = (flag) => {
+  var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt())
+    .map((char) => String.fromCharCode(char - 127397).toLowerCase())
+    .join("");
+  return <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt="flag" />;
+};
+
 function City() {
   const { id } = useParams();
   const { isLoading, getCity, currentCity } = useCitiesContext();
@@ -24,7 +31,9 @@ function City() {
 
   if (isLoading) return <Spinner />;
   if (!currentCity)
-    return <Message message="No data for this location, add your travels by clicking on the map." />;
+    return (
+      <Message message="No data for this location, add your travels by clicking on the map." />
+    );
 
   const { cityName, emoji, date, notes } = currentCity;
 
@@ -33,7 +42,7 @@ function City() {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <span>{flagemojiToPNG(emoji)}</span> {cityName}
         </h3>
       </div>
 
